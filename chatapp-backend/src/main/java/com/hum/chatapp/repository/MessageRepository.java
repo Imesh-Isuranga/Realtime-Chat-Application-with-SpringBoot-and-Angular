@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface MessageRepository extends JpaRepository<Message, Integer> {
 
-    List<Message> findAllByConversation(Conversation conversation);
+    List<Message> findAllByConversationOrderByTimestampDesc(Conversation conversation);
 
     void deleteAllByConversation(Conversation conversation);
 }

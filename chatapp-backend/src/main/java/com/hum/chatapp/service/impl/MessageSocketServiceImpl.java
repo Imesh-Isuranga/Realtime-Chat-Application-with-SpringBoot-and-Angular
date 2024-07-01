@@ -54,7 +54,7 @@ public class MessageSocketServiceImpl implements MessageSocketService {
     public void sendMessagesByConversationId(int conversationId) {
         Conversation conversation = new Conversation();
         conversation.setConversationId(conversationId);
-        List<Message> messageList = messageRepository.findAllByConversation(conversation);
+        List<Message> messageList = messageRepository.findAllByConversationOrderByTimestampDesc(conversation);
         List<MessageResponse> messageResponseList = messageList.stream()
                 .map((message -> MessageResponse.builder()
                         .messageId(message.getMessageId())
